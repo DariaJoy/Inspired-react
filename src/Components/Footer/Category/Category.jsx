@@ -1,28 +1,27 @@
+import { NavLink } from "react-router-dom"
 import { Titel } from "../Titel/Titel"
 import s from './Category.module.scss'
 
-export const Category = () => (
+export const Category = ({list}) => (
     <div className={s.category}>
-        <Titel text='Каталог'/>
+        <Titel className={s.categoryTitle} text='Каталог'/>
             <ul className={s.categoryList}>
-                <li className={s.categoryTitle}><a className={s.link} href="">Женщины</a>
-                    <ul className={s.categorSublist}>
-                        <li><a className={s.link} href="">Бюстгальтеры</a></li>
-                        <li><a className={s.link} href="">Трусы</a></li>
-                        <li><a className={s.link} href="">Носки</a></li>
-                        <li><a className={s.link} href="">Халаты</a></li>
-                        <li><a className={s.link} href="">Термобелье</a></li>
-                        <li><a className={s.link} href="">Пижамы</a></li>
-                    </ul>
-                </li>
-                <li className={s.categoryTitle}><a className={s.link} href="">Мужчины</a>
-                    <ul>
-                        <li><a className={s.link} href="">Трусы</a></li>
-                        <li><a className={s.link} href="">Носки</a></li>
-                        <li><a className={s.link} href="">Халаты</a></li>
-                        <li><a className={s.link} href="">Термобелье</a></li>
-                    </ul>            
-                </li>
+                {list.map(item => (
+                    <li key={item.link} className={s.categoryItem}>
+                        <h3 className={s.categorSubtitel}>
+                            <NavLink className={s.link} to={item.link}>{item.title}</NavLink>
+                        </h3>
+                        <ul className={s.categorySublist}>
+                            {item.categories.map(category => (
+                                <li key={category.link}>
+                                    <NavLink className={s.link} to={`${item.link}/${category.link}`}>
+                                        {category.title}
+                                    </NavLink>
+                                </li>  
+                            ))}
+                        </ul>
+                    </li>
+                ))}
             </ul>
         </div>           
 )
