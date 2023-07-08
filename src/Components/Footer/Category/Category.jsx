@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom"
+import { useSelector } from 'react-redux';
 import { Titel } from "../Titel/Titel"
 import s from './Category.module.scss'
-import { useSelector } from 'react-redux';
+
 
 export const Category = () => {
-    const {activeGender, genderList, categories} = useSelector(state => state.navigation);
+
+    const {genderList, activeGender, categories} = useSelector(state => state.navigation);
 
     return (
         <div className={s.category}>
@@ -13,7 +15,9 @@ export const Category = () => {
                     {genderList.map(gender => (
                         <li key={gender} className={s.categoryItem}>
                             <h3 className={s.categorSubtitel}>
-                                <NavLink className={s.link} to={gender}>{categories[gender].title}</NavLink>
+                                <NavLink className={s.link} to={gender}>
+                                    {categories[gender].title}
+                                </NavLink>
                             </h3>
                             <ul className={s.categorySublist}>
                                 {categories[activeGender]?.list?.map((item) => (

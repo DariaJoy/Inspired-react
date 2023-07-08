@@ -1,7 +1,7 @@
-import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { setActiveGender } from "../../features/navigationSlice.js";
+import { useDispatch } from "react-redux";
 import { Container } from "../Layout/Container/Container";
 import { Category } from "./Category/Category";
 import { Contacts } from "./Contacts/Contacts";
@@ -29,8 +29,8 @@ export const Footer = ({list}) => {
                 <Copyright/>
                 <Development/>
             </div>                                
-        </Container>
-        
+        </Container>    
     </footer>
 )
-} 
+}
+
