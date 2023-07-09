@@ -6,7 +6,7 @@ import s from './Category.module.scss'
 
 export const Category = () => {
 
-    const {genderList, activeGender, categories} = useSelector(state => state.navigation);
+    const {genderList, categories} = useSelector(state => state.navigation);
 
     return (
         <div className={s.category}>
@@ -20,10 +20,10 @@ export const Category = () => {
                                 </NavLink>
                             </h3>
                             <ul className={s.categorySublist}>
-                                {categories[activeGender]?.list?.map((item) => (
-                                    <li key={item.slug}>
-                                        <NavLink className={s.link} to={`${activeGender}/${item.slug}`}>
-                                            {item.title}
+                                {categories[gender]?.list?.map((category) => (
+                                    <li key={category.slug}>
+                                        <NavLink className={s.link} to={`${gender}/${category.slug}`}>
+                                            {category.title}
                                         </NavLink>
                                     </li>  
                                 ))}
