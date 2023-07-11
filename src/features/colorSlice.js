@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { COLORS_URL } from '../const.js'
 
 export const fetchColors = createAsyncThunk(
-    'color/fetchColor',
+    'color/fetchColors',
     async () => {
         const response = await fetch(COLORS_URL);
         return await response.json();
