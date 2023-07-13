@@ -1,46 +1,45 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { Container } from "../Layout/Container/Container";
-import { Product } from "../Product/Product"
+import { useDispatch, useSelector} from "react-redux";
 import { fetchCategory, fetchGender } from "../../features/goodsSlice.js"
 import { setActiveGender } from "../../features/navigationSlice";
-import s from "./MainPage.module.scss"
+import { Goods } from "../Goods/Goods.jsx";
+import { Banner } from "../Banner/Banner.jsx";
 
 
 export const MainPage = () => {
     const {gender, category} = useParams();
     const dispatch = useDispatch();
-    const {goodsList} = useSelector(state => state.goods);
-    const {activeGender, categories} = useSelector(state => state.navigation);
+    const {activeGender, categories, genderList} = useSelector(state => state.navigation);
+    const genderData = categories[activeGender];
+    const categoryData = genderData?.list.find((item) => item.slug === category)
     
     useEffect(() => {
-        dispatch(setActiveGender(gender))
-    }, [gender, dispatch]);
+        if (gender) {
+            dispatch(setActiveGender(gender));
+        } else if (genderList[0]) {
+            dispatch(setActiveGender(genderList[0]));
+            dispatch(fetchGender(genderList[0]));
+        }
+        
+    }, [gender, genderList, dispatch]);
     
     useEffect(() => {
         if (gender && category){
             dispatch(fetchCategory({gender, category}));
-            return
+            return;
         }
         if (gender){
-            dispatch(fetchGender(gender))
+            dispatch(fetchGender(gender));
+            return;
         }
     }, [gender, category, dispatch])
 
 
     return (
-        <section className={s.goods}>
-            <Container>
-                <h2 className={s.title}>Новинки</h2>
-                <ul className={s.list}>
-                    {goodsList.map((item) => (
-                        <li key={item.id}>
-                            <Product  {...item}/>
-                        </li>
-                    ))}
-                </ul>
-            </Container>    
-        </section>
+        <>
+            {!category && <Banner data={genderData?.banner}/>}
+            <Goods categoryData={categoryData} />
+        </>
         
 )}

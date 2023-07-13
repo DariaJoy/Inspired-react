@@ -28,6 +28,9 @@ const goodsSlice = createSlice({
     initialState: {
         status: 'idle',
         goodsList: [],
+        page: 0,
+        pages: 0,
+        totalCount: null,
         error: null,
     },
     extraReducers: builder => {
