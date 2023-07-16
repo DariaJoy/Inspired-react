@@ -12,13 +12,13 @@ export const Banner = ({data}) => {
     const [bgURL, setBgURL] = useState('');
     useEffect(() => {
         if (isMobile) {
-            setBgURL(`${API_URL}${data?.bg.mobile}`)
+            setBgURL(`${API_URL}/${data?.bg.mobile}`)
         } else if (isTablet) {
-            setBgURL(`${API_URL}${data?.bg.tablet}`)
+            setBgURL(`${API_URL}/${data?.bg.tablet}`)
         } else if (isLaptop) {
-            setBgURL(`${API_URL}${data?.bg.laptop}`)
+            setBgURL(`${API_URL}/${data?.bg.laptop}`)
         } else {
-            setBgURL(`${API_URL}${data?.bg.desktop}`)
+            setBgURL(`${API_URL}/${data?.bg.desktop}`)
         }
     }, [isMobile, isTablet, isLaptop, data]);
 
