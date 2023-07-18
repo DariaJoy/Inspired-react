@@ -5,12 +5,12 @@ import { Container } from '../Layout/Container/Container'
 import { ColorList } from '../ColorList/ColorList'
 import { Count } from '../Count/Count'
 import { ProductSize } from './ProductSize/ProductSize'
-import { ReactComponent as Like } from '../../assets/heart.svg'
+import { Goods } from '../Goods/Goods'
+import { BtnLike } from '../BtnLike/BtnLike'
 import { fetchProduct } from '../../features/productSlice.js'
 import { API_URL } from '../../const'
 import s from './ProductPage.module.scss'
 import cn from 'classnames'
-import { Goods } from '../Goods/Goods'
 import { fetchCategory } from '../../features/goodsSlice'
 
 export const ProductPage = () => {
@@ -87,7 +87,7 @@ export const ProductPage = () => {
                                 handleDecrement={handleDecrement}
                             />
                             <button className={s.addCart} aria-label='Добавить в корзину' type='submit'>В корзину</button>
-                            <button className={s.favorite} aria-label='Добавить в избранное' type='button'><Like/></button>
+                            <BtnLike id={id}/>
                         </div>
                     </form>
                 </Container>
