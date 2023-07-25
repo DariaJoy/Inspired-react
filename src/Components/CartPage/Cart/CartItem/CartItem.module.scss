@@ -158,6 +158,11 @@
     background  : url("./close.svg") center no-repeat;
     justify-self: end;
     align-self  : start;
+    color       : black;
+
+    &:hover {
+        color: #8a8a8a;
+    }
 }
 
 .count {

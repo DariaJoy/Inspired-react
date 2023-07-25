@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { fetchNavigation } from "./features/navigationSlice";
 import { fetchColors } from "./features/colorSlice";
 import { ProductPage } from "./Components/ProductPage/ProductPage";
+import { SearchPage } from './Components/SearchPage/SearchPage';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
             <Route index element={<MainPage/>}/>
             <Route path='/catalog/:gender/:category?' element={<MainPage />}/>
             <Route path='/favorite' element={<FavoritePage />}/>
+            <Route path='/search' element={<SearchPage/>}/>
             <Route path='/cart' element={<CartPage />}/>
             <Route path='/product/:id' element={<ProductPage />}/>
             <Route path='*' element={<ErrorPage/>}/>
