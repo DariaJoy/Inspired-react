@@ -155,6 +155,14 @@
     justify-self    : end;
     align-self      : end;
 
+    &:hover {
+        background-color: #8a8a8a;
+    }
+
+    &:active {
+        transform: translate(1px, 1px);
+    }
+
     @media (max-width: 768px) {
         padding    : 12px 41px;
         font-size  : 10px;

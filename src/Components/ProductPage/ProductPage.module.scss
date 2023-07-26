@@ -184,6 +184,14 @@
     padding         : 14px 41px 15px;
     margin-right    : 16px;
 
+    &:hover {
+        background-color: #8a8a8a;
+    }
+
+    &:active {
+        transform: translate(1px, 1px);
+    }
+
     @media (max-width: 768px) {
         padding     : 12px 41px;
         font-size   : 10px;

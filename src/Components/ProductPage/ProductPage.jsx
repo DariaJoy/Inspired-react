@@ -63,7 +63,7 @@ export const ProductPage = () => {
         <>
             <section className={s.card}>
                 <Container className={s.container}>
-                    <img className={s.image} src={`${API_URL}/${product.pic}`} 
+                    <img className={s.image} src={`${API_URL}${product.pic}`} 
                         alt={`${product.title} ${product.description}`}
                     />
                     <form className={s.content} 

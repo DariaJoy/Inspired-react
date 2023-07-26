@@ -1,9 +1,10 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { Container } from '../Layout/Container/Container'
 import s from './Search.module.scss'
 import * as Yup from 'yup'
+import { toggleSearch } from '../../features/searchSlice'
 
 export const Search = () => {
     const {openSearch} = useSelector((state) => state.search);
@@ -14,10 +15,12 @@ export const Search = () => {
         search: Yup.string().required('Введите запрос*')
     })
     const navigate = useNavigate();
-
-    const handlSubmit = ({search}) => {
+    const dispatch = useDispatch();
+    const handlSubmit = ({search}, { resetForm }) => {
         if (search.trim()) {
             navigate(`/search?q=${search}`);
+            resetForm();
+            dispatch(toggleSearch(false));
         }
     }
         return (

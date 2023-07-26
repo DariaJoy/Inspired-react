@@ -8,7 +8,7 @@ import s from "./SearchPage.module.scss"
 export const SearchPage = () => {
     const { goodsList } = useSelector(state => state.goods);
     const dispatch = useDispatch();
-    let [searchParams] = useSearchParams
+    let [searchParams] = useSearchParams()
 
     useEffect(() => {
         const search = searchParams.get('q');
